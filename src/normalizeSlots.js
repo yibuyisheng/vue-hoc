@@ -15,13 +15,13 @@ const normalizeSlots: NormalizeSlots = (slots, context) => Object.keys(slots)
           slots[key] = context.$createElement('template', {slot: key}, [vnode]);
         } else {
           slots[key].context = context;
-
-          if (!vnode.data) {
-            vnode.data = {};
-          }
-          vnode.data.slot = key;
         }
       }
+
+      if (!vnode.data) {
+        vnode.data = {};
+      }
+      vnode.data.slot = key;
     });
     return arr.concat(slots[key]);
   }, []);
